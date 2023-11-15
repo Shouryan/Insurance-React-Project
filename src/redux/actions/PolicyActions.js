@@ -7,12 +7,7 @@ export const showPolicy = (policy) => {
         payload: policy
     }
 }
-// export const logout = (user) => {
-//     return {
-//         type: ActionTypes.LOGOUT,
-//         payload: user
-//     }
-// }
+
 export const setPolicy = (policy) => {
     return {
         type: ActionTypes.SET_POLICY,

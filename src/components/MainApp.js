@@ -4,6 +4,7 @@ import BrowserRoutes from './HeaderComponents/BrowserRoutes'
 import { useSelector } from 'react-redux'
 import RegisterPage from './UserAuth/RegisterPage'
 import BasicTabs from './BasicTabs'
+import AppInfo from './AppInfo'
 function MainApp(props){
 
     
@@ -12,8 +13,9 @@ function MainApp(props){
 
     return(
     <div>
-
+        
         <BrowserRoutes/>
+        
 
     </div>
 

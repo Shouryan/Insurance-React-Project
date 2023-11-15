@@ -1,0 +1,15 @@
+
+.PolicyList {
+    margin: 20px;
+  }
+  
+  .PolicyList h2 {
+    color: black; /* Dark text color */
+    margin-bottom: 10px;
+  }
+/*   
+  .PolicyList .MuiBox-root {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  } */

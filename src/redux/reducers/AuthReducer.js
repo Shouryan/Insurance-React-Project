@@ -1,22 +1,16 @@
 import { ActionTypes } from "../constants/authType"
 
 const initialUser = {
-    user: {
-        username:"",
-    }
-}
-const AuthUser={
-    user: {
-        username:"",
-    }
+    user:{}
 }
 
-const AuthReducer = (state=AuthUser,{type,payload})=>{
+
+const AuthReducer = (state=initialUser,{type,payload})=>{
     switch(type){
         case ActionTypes.LOGIN:
             return {...state,user:payload}
         case ActionTypes.LOGOUT:
-            return state=initialUser
+            return {...state,user:{}}
         default:
             return state
     }

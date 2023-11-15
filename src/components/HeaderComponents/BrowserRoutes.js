@@ -5,8 +5,10 @@ import LoginPage from '../UserAuth/LoginPage';
 import RegisterPage from '../UserAuth/RegisterPage'
 import HeaderComp from './HeaderComp';
 import PageNotFound from '../UserAuth/PageNotFound';
-import MainApp from '../MainApp';
 import BasicTabs from '../BasicTabs';
+import PurchasePage from '../DatabaseService/PurchasePage';
+import PolicyOwnedList from '../DatabaseService/PolicyOwnedList';
+import AppInfo from '../AppInfo';
 
 
 const routesDisplay = (
@@ -14,10 +16,13 @@ const routesDisplay = (
         <div>
             <HeaderComp />
             <Routes>
-                <Route exact path="/" element={<BasicTabs />}  />
+                <Route  exact path="/" element={<AppInfo />}  />
+                <Route  path="/home" element={<BasicTabs />}  />
                 <Route  path="/login" element={<LoginPage />} />
-                <Route  path="/logout" element={<PageNotFound />} />
                 <Route  path="/register" element={<RegisterPage />} />
+                {/* <Route  path="/purchase" element={<PurchasePage />} />
+                <Route  path="/policyOwned" element={<PolicyOwnedList />} /> */}
+
                 <Route  path='/*' element={<PageNotFound />} />
             </Routes>
         </div>

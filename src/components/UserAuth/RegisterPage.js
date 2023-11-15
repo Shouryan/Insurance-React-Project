@@ -1,10 +1,11 @@
 
 import { Button, Container, Grid, TextField, Typography, FormControl, InputLabel, MenuItem, Select } from '@mui/material';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
 function RegisterPage(props) {
   
+  const nav = useNavigate()
   const user = {
       username: '',
       password: '',
@@ -20,7 +21,10 @@ function RegisterPage(props) {
     user.confirmPassword = e.target.confirmPassword.value
     user.userType = e.target.usertype.value
     const response = await axios.post('http://localhost:8000/loginService/register',user)
-    console.log(response.data)
+    .then(()=>{
+      // console.log(response.data)
+      nav('/home')
+    })
   };
 
     return (

@@ -1,0 +1,28 @@
+/* Add this CSS to your styles file or in the style tag of your component */
+.Container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    
+  }
+  
+  .Form {
+    width: 100%;
+    background-color: 	#f0ffff;
+  }
+  
+  .FormTitle {
+    text-align: center;
+    color: 	black;
+  }
+  
+  .TextField {
+    margin-bottom: 16px;
+    color: aqua;
+  }
+  
+  .Button {
+    margin-top: 16px;
+  }
+  

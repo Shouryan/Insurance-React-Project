@@ -1,21 +1,31 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { AppBar, Toolbar, Button } from '@mui/material';
-import { useSelector } from 'react-redux';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { logout } from '../../redux/actions/AuthUserActions';
+import './HeaderComp.css'
 const HeaderDisplay = () => {
 
   const user = useSelector(state=>state.AuthUser.user)
+  const dispatch = useDispatch();
+
+  const handleLogout =()=>{
+    dispatch(logout());
+    window.location.reload(true);
+  }
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" className='appbar'>
       <Toolbar>
         <Button component={NavLink} to="/" exact color="inherit">
+          InsureCom
+        </Button>
+        <Button component={NavLink} to="/home" exact color="inherit">
           Home
         </Button>
         {
-          user.username!=""?
-            <Button component={NavLink} to="/login" exact color="inherit">
+          user && user.username ?
+            <Button component={NavLink} to="/home" onClick={handleLogout} exact color="inherit">
               Logout
             </Button>
             :
@@ -34,7 +44,7 @@ const HeaderDisplay = () => {
         <Button component={NavLink} to="/portfolio" color="inherit">
           Portfolio
         </Button>
-        <h4>{user.username}</h4>
+        <h4>{user && user.username}</h4>
       </Toolbar>
     </AppBar>
   );

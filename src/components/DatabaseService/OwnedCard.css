@@ -1,0 +1,53 @@
+.owned-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 15px;
+  margin: 10px;
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.owned-card.expanded {
+  border-color: #007bff; /* Change to the color you prefer for the expanded state */
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h2 {
+  margin: 0;
+  font-size: 1.2em;
+}
+
+h3 {
+  color: #28a745; /* Change to the color you prefer for the premium amount */
+  font-size: 1.1em;
+}
+
+h4 {
+  margin-top: 10px;
+  color: #6c757d; /* Change to the color you prefer for the duration */
+  font-size: 1em;
+}
+
+/* Add more styles as needed for the expanded content */
+
+.addToCartBtn {
+  background-color: #007bff; /* Change to the color you prefer for the button */
+  color: #fff; /* Change to the text color you prefer for the button */
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.addToCartBtn:hover {
+  background-color: #0056b3; /* Change to the hover color you prefer for the button */
+}

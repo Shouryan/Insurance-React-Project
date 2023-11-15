@@ -1,0 +1,69 @@
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 15px;
+    margin: 15px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .card:hover {
+    transform: scale(1.02);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .header h2 {
+    font-size: 1.5em;
+    color: #2c3e50; /* Dark text color */
+  }
+  
+  .header h3 {
+    font-size: 1.2em;
+    color:#e74c3c; /* Green color for premium */
+    align-items: center;
+  }
+  
+  .header h4 {
+    font-size: 1em;
+    color:  #27ae60; /* Red color for discounted premium */
+  }
+  
+  .duration {
+    font-size: 1em;
+    margin-bottom: 10px;
+  }
+  
+  .expanded {
+    height: auto;
+    padding-bottom: 10px;
+  }
+  
+  .expanded p {
+    margin-bottom: 10px;
+  }
+  
+  
+  .addToCartBtn {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin-top: 10px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  .addToCartBtn:hover {
+    background-color: #45a049;
+  }
+  
