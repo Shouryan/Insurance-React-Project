@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const AddDiscount = () => {
+
+  const nav = useNavigate()
+
   const [formData, setFormData] = useState({
-    discountId: '',
     policyId: '',
     discountAmount:'',
-    active:''
+    active:false
   });
 
   const handleChange = (e) => {
@@ -29,6 +32,7 @@ const AddDiscount = () => {
     axios.post('http://localhost:8025/discountService/adddiscount/', formData)
       .then(response => {
         console.log('POST success:', response.data);
+        nav('/feedback')
         // Handle success, e.g., redirect to another page or show a success message
       })
       .catch(error => {
@@ -43,16 +47,6 @@ const AddDiscount = () => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <label htmlFor="discountId">Discount ID:</label>
-      <input
-        type="text"
-        id="discountId"
-        name="discountId"
-        value={formData.discountId}
-        onChange={handleChange}
-        required
-      />
-
       <label htmlFor="policyId">Policy ID:</label>
       <input
         type="text"

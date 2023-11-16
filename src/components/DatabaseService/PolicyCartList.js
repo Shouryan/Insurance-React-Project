@@ -6,8 +6,11 @@ import { setPolicyCart, setPolicyCartPolicy } from "../../redux/actions/PolicyCa
 import PolicyCartCard from "./PolicyCartCard";
 import { useNavigate } from "react-router-dom";
 import { setDiscount } from "../../redux/actions/DiscountAction";
+import PolicyTabs from "./PolicyTabs";
+import { Container, CssBaseline, Grid, ThemeProvider, createTheme } from "@mui/material";
 
-
+// TODO remove, this demo shouldn't need to reset the theme.
+const defaultTheme = createTheme();
 
 export default function PolicyCartList (props) {
 
@@ -45,13 +48,26 @@ export default function PolicyCartList (props) {
     
       return (
       <div class="PolicyList">
-        <h2>Policies Available In CART</h2>
+        {/* <h2>Policies Available In CART</h2>
         <Box sx={{ flexGrow: 1, overflow: "hidden", px: 3 }}>
             {
             policyList.map((policy, idx) => (
             <PolicyCartCard key={policy.policyId} useridx={idx} policy={policy} />
             ))}
-        </Box>
+        </Box> */}
+        <ThemeProvider theme={defaultTheme}>
+          <CssBaseline />
+          <main>
+            <Container sx={{ py: 8 }} maxWidth="md">
+              <Grid container spacing={4}>
+              {
+                policyList.map((policy, idx) => (
+                <PolicyCartCard key={policy.policyId} useridx={idx} policy={policy} />
+                ))}
+              </Grid>
+            </Container>
+          </main>
+        </ThemeProvider>
         <div>
           <h4></h4>
           <button onClick={handlePurchase}>

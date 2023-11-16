@@ -30,7 +30,7 @@ const PurchasePage = () => {
         // Handle success
 
         console.log("Form data sent successfully");
-        nav('/policyOwned')
+        nav('/feedback')
       } else {
         // Handle error
 

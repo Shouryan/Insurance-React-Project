@@ -1,70 +1,122 @@
-
-import { Button, Container, Grid, TextField, Typography } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from '../../redux/actions/AuthUserActions';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
-import { log } from 'react-modal/lib/helpers/ariaAppHider';
-import './LoginPage.css'
+import { NavLink, useNavigate } from 'react-router-dom';
+import * as React from 'react';
+import Avatar from '@mui/material/Avatar';
+import Button from '@mui/material/Button';
+import CssBaseline from '@mui/material/CssBaseline';
+import TextField from '@mui/material/TextField';
+import FormControlLabel from '@mui/material/FormControlLabel';
+import Checkbox from '@mui/material/Checkbox';
+import Link from '@mui/material/Link';
+import Grid from '@mui/material/Grid';
+import Box from '@mui/material/Box';
+import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
-function LoginPage(props){
-  
-  const user = useSelector(state => state.AuthUser.user)
-  const dispatch = useDispatch()
-  const nav = useNavigate();
-
-  const handleLogin = async(e) => {
-      e.preventDefault();
-      const userLoginRequest = {
-        'username':e.target.username.value,
-        'password':e.target.password.value
-      }
-      const response = await axios.post('http://localhost:8000/loginService/login',userLoginRequest)
-      dispatch(login(response.data))
-      console.log(response);
-      console.log(user);
-      if(user)nav('/home')
-      console.log("Hello");
-  };
-
-  const handleInputChange = (e) => {
-  };
-
-    return (
-      <Container maxWidth="sm" className="Container">
-        <form onSubmit={handleLogin} className='form'>
-          <Grid container spacing={3} alignItems="center" justifyContent="center" style={{ minHeight: '100vh' }}>
-            <Grid item xs={12}>
-              <Typography variant="h4" align="center" className="FormTitle">Login</Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Username"
-                variant="outlined"
-                fullWidth
-                name="username"
-                onChange={handleInputChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <TextField
-                label="Password"
-                type="password"
-                variant="outlined"
-                fullWidth
-                name="password"
-                onChange={handleInputChange}
-              />
-            </Grid>
-            <Grid item xs={12}>
-              <Button variant="contained" color="secondary" type="submit" fullWidth>
-                Login
-              </Button>
-            </Grid>
-          </Grid>
-        </form>
-      </Container>
-    );
+function Copyright(props) {
+  return (
+    <Typography variant="body2" color="text.secondary" align="center" {...props}>
+      {'Copyright © '}
+      <Link color="inherit" href="https://mui.com/">
+        BeInsure
+      </Link>{' '}
+      {new Date().getFullYear()}
+      {'.'}
+    </Typography>
+  );
 }
 
-export default LoginPage;
+// TODO remove, this demo shouldn't need to reset the theme.
+
+const defaultTheme = createTheme();
+
+export default function LoginPage() {  
+    const user = useSelector(state => state.AuthUser.user)
+    const dispatch = useDispatch()
+    const nav = useNavigate();
+  
+    const handleSubmit = async(e) => {
+        e.preventDefault();
+        const userLoginRequest = {
+          'username':e.target.username.value,
+          'password':e.target.password.value
+        }
+        const response = await axios.post('http://localhost:8000/loginService/login',userLoginRequest)
+        dispatch(login(response.data))
+        console.log(response);
+        console.log(user);
+        if(user)nav('/home')
+        console.log("Hello");
+    };
+  
+
+  return (
+    <ThemeProvider theme={defaultTheme}>
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <Box
+          sx={{
+            marginTop: 8,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+          }}
+        >
+          <Avatar sx={{ m: 1, bgcolor: 'secondary.main' }}>
+            <LockOutlinedIcon />
+          </Avatar>
+          <Typography component="h1" variant="h5">
+            Sign in
+          </Typography>
+          <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+            />
+            <TextField
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+            />
+            <Button
+              type="submit"
+              fullWidth
+              variant="contained"
+              sx={{ mt: 3, mb: 2 }}
+            >
+              Sign In
+            </Button>
+            <Grid container>
+            <Grid item>
+                <NavLink to="/forgetpassword" > 
+                  Forget Password?
+                </NavLink>  
+              </Grid>
+              <Grid item>
+                <NavLink to="/register" > 
+                  {"Don't have an account? Sign Up"}
+                </NavLink>  
+              </Grid>
+            </Grid>
+          </Box>
+        </Box>
+        <Copyright sx={{ mt: 8, mb: 4 }} />
+      </Container>
+    </ThemeProvider>
+  );
+}

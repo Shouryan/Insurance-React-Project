@@ -9,6 +9,8 @@ import PolicyOwnedList from './DatabaseService/PolicyOwnedList';
 import AddPolicyPage from './DatabaseService/AddPolicyPage';
 import { useSelector } from 'react-redux';
 import AddDiscount from './DatabaseService/AddDiscount';
+import FeedbackComp from './FeedbackService/FeedbackComp';
+import PolicyTabs from './DatabaseService/PolicyTabs';
 
 
 const BasicTabs = () => {
@@ -31,9 +33,11 @@ const BasicTabs = () => {
         {(user && user.userType=="ADMIN") && <Tab label="Add Policy"/>}
         {(user && user.userType=="ADMIN") && <Tab label="Add Discount"/>}
         
+        {(user && user.userType=="APPLICATION_OWNER") && <Tab label="FeedBack"/>}
+        
       </Tabs>
       <div>
-        {value === 0 && <div><PolicyList/></div>}
+        {value === 0 && <div><PolicyTabs/><PolicyList/></div>}
 
         {value === 1 && (user && user.userType=="CLIENT") && <div><PolicyCartList/></div>}
         {value === 2 && (user && user.userType=="CLIENT") && <div><PolicyOwnedList/></div>}
@@ -41,6 +45,7 @@ const BasicTabs = () => {
         {value === 1 && (user && user.userType=="ADMIN") && <div><AddPolicyPage/> </div>}
         {value === 2 && (user && user.userType=="ADMIN") && <div><AddDiscount/> </div>}
 
+        {value === 1 && (user && user.userType=="APPLICATION_OWNER") && <div><FeedbackComp/> </div>}
       </div>
     </Box>
   );

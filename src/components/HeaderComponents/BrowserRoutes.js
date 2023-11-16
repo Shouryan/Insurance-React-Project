@@ -9,6 +9,8 @@ import BasicTabs from '../BasicTabs';
 import PurchasePage from '../DatabaseService/PurchasePage';
 import PolicyOwnedList from '../DatabaseService/PolicyOwnedList';
 import AppInfo from '../AppInfo';
+import FeedbackPage from '../FeedbackService/FeedbackPage';
+import SupportPage from '../SupportPage';
 
 
 const routesDisplay = (
@@ -16,12 +18,15 @@ const routesDisplay = (
         <div>
             <HeaderComp />
             <Routes>
-                <Route  exact path="/" element={<AppInfo />}  />
+                <Route exact path="/" element={<AppInfo />}  />
                 <Route  path="/home" element={<BasicTabs />}  />
                 <Route  path="/login" element={<LoginPage />} />
                 <Route  path="/register" element={<RegisterPage />} />
-                {/* <Route  path="/purchase" element={<PurchasePage />} />
-                <Route  path="/policyOwned" element={<PolicyOwnedList />} /> */}
+                <Route  path="/purchase" element={<PurchasePage />} />
+                <Route  path="/policyOwned" element={<PolicyOwnedList />} />
+                <Route  path="/feedback" element={<FeedbackPage />} />
+                <Route  path="/support" element={<SupportPage />} />
+                
 
                 <Route  path='/*' element={<PageNotFound />} />
             </Routes>
